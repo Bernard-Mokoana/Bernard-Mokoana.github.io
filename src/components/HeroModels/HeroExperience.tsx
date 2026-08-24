@@ -13,7 +13,7 @@ const HeroExperience = () => {
   return (
     <Canvas camera={{ position: [0, 0, 15], fov: 45}}>
 
-      <HeroLights />
+    
 
         <OrbitControls 
         enablePan={false}
@@ -23,6 +23,8 @@ const HeroExperience = () => {
         minPolarAngle={Math.PI / 5} 
         maxPolarAngle={Math.PI / 2}
         />
+
+        <HeroLights />
 
         <group 
         scale={isMobile? 0.7 : 1}
