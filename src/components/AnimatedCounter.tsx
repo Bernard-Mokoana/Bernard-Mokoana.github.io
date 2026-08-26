@@ -1,5 +1,11 @@
 import { counterItems } from "../constants"
-import CountUp from "react-countup"
+import CountUpModule, { type CountUpProps } from "react-countup"
+import type { ComponentType } from "react"
+
+const CountUp = (
+  (CountUpModule as unknown as { default?: ComponentType<CountUpProps> }).default ??
+  CountUpModule
+) as ComponentType<CountUpProps>
 
 const AnimatedCounter = () => {
   return (
