@@ -12,13 +12,13 @@ const Navbar = () => {
 
         window.addEventListener('scroll', handleScroll);
 
-        return () => window.removeEventListener('scroll', handleScroll);
         handleScroll();
+        return () => window.removeEventListener('scroll', handleScroll);
     }, [])
 
 
   return (
-    <header className={`navabar ${scrolled ? `scrolled` : `not-scrolled`}`}>
+    <header className={`navbar ${scrolled ? `scrolled` : `not-scrolled`}`}>
         <div className="inner">
             <a className="logo" href="#hero">
                 Bernard Mokoana
