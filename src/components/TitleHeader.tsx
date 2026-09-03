@@ -1,6 +1,9 @@
 const TitleHeader = ( {title, sub}) => {
   return (
-    <div>TitleHeader</div>
+    <div>
+      <p>{sub}</p>
+      <h2 className="text-center">{title}</h2>
+    </div>
   )
 }
 
