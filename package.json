@@ -10,12 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@exodus/bytes": "^1.15.1",
     "@gsap/react": "^2.1.2",
     "@react-three/drei": "^10.7.8",
     "@react-three/fiber": "^9.7.0",
     "@react-three/postprocessing": "^3.0.5",
     "@tailwindcss/vite": "^4.3.3",
+    "emailjs": "^5.0.3",
     "gsap": "^3.15.0",
     "react": "^19.2.8",
     "react-countup": "^6.5.3",
