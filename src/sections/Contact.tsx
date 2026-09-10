@@ -5,13 +5,14 @@ import TitleHeader from "../components/TitleHeader";
 import ContactExperience from "../components/Models/contact/ContactExperience";
 
 const Contact = () => {
-  const formRef = useRef(null);
-  const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+    const submittingRef = useRef(false);
+    const formRef = useRef(null);
+    const [loading, setLoading] = useState(false);
+    const [form, setForm] = useState({
+        name: "",
+        email: "",
+        message: "",
+    });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,7 +21,9 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Show loading state
+    if (submittingRef.current) return;
+    submittingRef.current = true;
+    setLoading(true); 
 
     try {
       await emailjs.sendForm(
@@ -33,9 +36,11 @@ const Contact = () => {
       // Reset form and stop loading
       setForm({ name: "", email: "", message: "" });
     } catch (error) {
-      console.error("EmailJS Error:", error); // Optional: show toast
+         //  Use React toast
+         console.error("Error to send email", error)
     } finally {
-      setLoading(false); // Always stop loading, even on error
+        submittingRef.current = false;
+        setLoading(false); // Always stop loading, even on error
     }
   };
 
@@ -93,7 +98,7 @@ const Contact = () => {
                   />
                 </div>
 
-                <button type="submit">
+                <button type="submit" disabled={loading}>
                   <div className="cta-button group">
                     <div className="bg-circle" />
                     <p className="text">
