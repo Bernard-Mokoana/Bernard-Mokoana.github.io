@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar"
 import Contact from "./sections/Contact"
 import FeatureCards from "./sections/FeatureCards"
+import Footer from "./sections/Footer"
 import Hero from "./sections/Hero"
 // import LogoSection from "./sections/LogoSection"
 import ShowcaseSection from "./sections/ShowcaseSection"
@@ -16,6 +17,7 @@ const App = () => {
     <FeatureCards />
     <TechStack />
     <Contact />
+    <Footer />
     </>
   )
 }
