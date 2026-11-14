@@ -110,7 +110,7 @@ const Hero = () => {
 
         </header>
 
-        {/* RIGHT: 3D CREATIVE WORKSPACE */}
+        {/* RIGHT: INTERACTIVE TECHNICAL GLOBE */}
         <figure className="hero-scene">
 
           <div className="hero-scene-label">
@@ -119,7 +119,7 @@ const Hero = () => {
             </span>
             <span className="hero-scene-line" />
             <span className="mono-label">
-              THE WORKSPACE
+              THE TECHNICAL UNIVERSE
             </span>
           </div>
 
@@ -130,7 +130,7 @@ const Hero = () => {
           <div className="hero-scene-caption">
             <span className="hero-caption-dot" />
             <span className="mono-label">
-              A SPACE FOR IDEAS TO TAKE SHAPE
+              SELECT A MARKER TO EXPLORE ITS PROJECTS
             </span>
           </div>
 
@@ -141,7 +141,7 @@ const Hero = () => {
       {/* Bottom information */}
       <div className="hero-bottom">
         <span className="mono-label">
-          PRETORIA, SOUTH AFRICA
+          SOUTH AFRICA
         </span>
 
         <a href="#work" className="hero-scroll">

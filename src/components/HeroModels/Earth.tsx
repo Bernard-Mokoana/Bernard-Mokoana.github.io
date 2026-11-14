@@ -2,7 +2,8 @@
 import { Line } from "@react-three/drei";
 import { useMemo } from "react";
 import * as THREE from "three";
-import TechnologyMarkers, { type Technology} from "./TechnologyMarkers";
+import TechnologyMarkers from "./TechnologyMarkers";
+import type { Technology } from "./technologyData";
 
 type EarthProps = {
     onSelectTechnology: (technology: Technology) => void;

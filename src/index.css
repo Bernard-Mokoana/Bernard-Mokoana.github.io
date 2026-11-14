@@ -1512,3 +1512,90 @@ img {
     font-size: 11px;
   }
 }
+
+/* PROJECT CONNECTIONS INSIDE THE GLOBE PANEL */
+.globe-info-panel {
+  width: min(390px, calc(100% - 32px));
+  max-height: min(72%, 560px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(145, 191, 194, 0.35) transparent;
+}
+
+.globe-panel-projects {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(163, 170, 164, 0.15);
+}
+
+.globe-panel-section-label {
+  color: #91bfc2;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.globe-project-card {
+  padding: 12px;
+  border: 1px solid rgba(145, 191, 194, 0.16);
+  border-radius: 11px;
+  background: rgba(32, 38, 34, 0.58);
+}
+
+.globe-project-card h4 {
+  margin: 0;
+  color: #f2f2ed;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.globe-project-card p {
+  margin: 7px 0 10px;
+  color: #a3aaa4;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.globe-project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.globe-project-links a {
+  color: #c3f36b;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.globe-project-links a:hover {
+  color: #f2f2ed;
+}
+
+.globe-project-links a:focus-visible {
+  outline: 2px solid #c3f36b;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (max-width: 480px) {
+  .globe-info-panel {
+    max-height: 76%;
+  }
+
+  .globe-project-card {
+    padding: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .globe-project-links a {
+    transition: none;
+  }
+}

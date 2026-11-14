@@ -5,7 +5,7 @@ import { Canvas } from "@react-three/fiber";
 import { useMediaQuery } from "react-responsive";
 
 import Earth from "./Earth";
-import type { Technology } from "./TechnologyMarkers";
+import { portfolioProjects, type Technology } from "./technologyData";
 
 const HeroExperience = () => {
   const [selectedTechnology, setSelectedTechnology] =
@@ -145,6 +145,41 @@ const HeroExperience = () => {
           <div className="globe-panel-application">
             <span>HOW I USE IT</span>
             <p>{selectedTechnology.application}</p>
+          </div>
+
+          <div className="globe-panel-projects">
+            <span className="globe-panel-section-label">CONNECTED PROJECTS</span>
+
+            {selectedTechnology.projects.map((connection) => {
+              const project = portfolioProjects[connection.projectId];
+
+              if (!project) return null;
+
+              return (
+                <article className="globe-project-card" key={project.id}>
+                  <h4>{project.name}</h4>
+                  <p>{connection.usage}</p>
+                  <div className="globe-project-links">
+                    <a
+                      href={project.repositoryUrl}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      Repository <span aria-hidden="true">↗</span>
+                    </a>
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                      >
+                        Live project <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </aside>
       )}
