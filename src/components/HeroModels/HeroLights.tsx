@@ -3,10 +3,13 @@ const HeroLights = () => {
   return (
     <>
       {/* General environment illumination */}
-      <ambientLight
-        intensity={0.6}
-        color="#dce5dd"
-      />
+      <ambientLight intensity={0.45} color="#dce5dd" />
+
+      <directionalLight
+       position={[4, 5, 5]}
+       intensity={2.2}
+       color="#f2f2ed"
+       />
 
       {/* Main overhead light */}
       <spotLight
@@ -38,15 +41,17 @@ const HeroLights = () => {
 
       {/* Subtle environmental fill */}
       <pointLight
-        position={[0, 2, -4]}
-        intensity={12}
-        color="#91bfc2"
+      position={[-4, 1, -3]}
+      intensity={15}
+      color="#91bfc2"
+      distance={10}
       />
-
+      
       <pointLight
-        position={[-3, 1, 1]}
-        intensity={8}
-        color="#c3f36b"
+      position={[3, -2, 2]}
+      intensity={9}
+      color="#c3f36b"
+      distance={8}
       />
     </>
   );

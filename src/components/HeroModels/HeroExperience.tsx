@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useMediaQuery } from "react-responsive";
@@ -8,6 +8,28 @@ import Earth from "./Earth";
 import type { Technology } from "./TechnologyMarkers";
 
 const HeroExperience = () => {
+  const [selectedTechnology, setSelectedTechnology] =
+    useState<Technology | null>(null);
+
+  const prefersReducedMotion = useMediaQuery({
+    query: "(prefers-reduced-motion: reduce)",
+  });
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSelectedTechnology(null);
+      }
+    };
+    
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    }
+  }, []);
+
+
   const isTablet = useMediaQuery({
     query: "(max-width: 1024px)",
   });
@@ -16,8 +38,6 @@ const HeroExperience = () => {
     query: "(max-width: 768px)",
   });
 
-  const [selectedTechnology, setSelectedTechnology] =
-    useState<Technology | null>(null);
 
   return (
     <div className="hero-experience">
@@ -51,18 +71,20 @@ const HeroExperience = () => {
           intensity={8}
           color="#c3f36b"
         />
-
+        
         <OrbitControls
-          makeDefault
-          enablePan={false}
-          enableZoom={!isTablet}
-          enableRotate
-          autoRotate
-          autoRotateSpeed={0.4}
-          minDistance={5}
-          maxDistance={12}
-          minPolarAngle={Math.PI / 4}
-          maxPolarAngle={Math.PI * 0.75}
+        makeDefault
+        enablePan={false}
+        enableZoom={!isTablet}
+        enableRotate
+        enableDamping
+        dampingFactor={0.06}
+        autoRotate={!selectedTechnology && !prefersReducedMotion}
+        autoRotateSpeed={0.3}
+        minDistance={5}
+        maxDistance={12}
+        minPolarAngle={Math.PI / 4}
+        maxPolarAngle={Math.PI * 0.75}
         />
 
         <group

@@ -996,10 +996,9 @@ img {
 }
 
 .hero-3d-layout {
-  position: absolute;
-  inset: 0;
+  position: relative;
   width: 100%;
-  height: 100%;
+  min-height: clamp(380px, 48vw, 620px);
 }
 
 .hero-scene-label {
@@ -1269,7 +1268,7 @@ img {
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 420px;
+  min-height: inherit;
 }
 
 .hero-experience canvas {
@@ -1422,5 +1421,94 @@ img {
 
   .globe-tech-marker {
     transition: none;
+  }
+}
+
+/* GLOBE INTERACTION POLISH */
+
+.globe-tech-marker {
+  cursor: pointer;
+  pointer-events: auto;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.globe-tech-marker:focus-visible {
+  outline: 2px solid #c3f36b;
+  outline-offset: 4px;
+}
+
+.globe-tech-marker:hover {
+  color: #c3f36b;
+}
+
+.globe-tech-marker.is-selected {
+  border-color: #c3f36b;
+  color: #c3f36b;
+  background: rgba(32, 38, 34, 0.98);
+  box-shadow: 0 0 22px rgba(195, 243, 107, 0.2);
+}
+
+/* MOBILE MARKERS */
+
+@media (max-width: 768px) {
+  .globe-tech-marker {
+    width: 34px;
+    height: 34px;
+    justify-content: center;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  .globe-tech-marker span {
+    display: none;
+  }
+
+  .globe-tech-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .globe-tech-marker.is-selected {
+    transform: scale(1.12);
+  }
+}
+
+/* INFORMATION PANEL REFINEMENT */
+
+.globe-info-panel {
+  width: min(340px, calc(100% - 32px));
+  border-color: rgba(195, 243, 107, 0.2);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.35),
+    0 0 25px rgba(145, 191, 194, 0.05);
+}
+
+.globe-panel-category {
+  display: block;
+}
+
+.globe-panel-application span {
+  display: block;
+}
+
+.globe-panel-close:focus-visible {
+  outline: 2px solid #c3f36b;
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .globe-info-panel {
+    bottom: 8px;
+    padding: 14px;
+  }
+
+  .globe-panel-header h3 {
+    font-size: 18px;
+  }
+
+  .globe-panel-description,
+  .globe-panel-application p {
+    font-size: 11px;
   }
 }
