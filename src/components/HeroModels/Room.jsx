@@ -15,7 +15,7 @@ export function Room(props) {
   const matcapTexture = useTexture("/images/textures/mat1.png");
 
   const curtainMaterial = new THREE.MeshPhongMaterial({
-    color: "#d90429",
+    color: "#263b31",
   });
 
   const bodyMaterial = new THREE.MeshMatcapMaterial({
@@ -23,23 +23,23 @@ export function Room(props) {
   });
 
   const tableMaterial = new THREE.MeshPhongMaterial({
-    color: "#582f0e",
+    color: "#202622",
   });
 
   const radiatorMaterial = new THREE.MeshPhongMaterial({
-    color: "#fff",
+    color: "#a3aaa4",
   });
 
   const compMaterial = new THREE.MeshStandardMaterial({
-    color: "#fff",
+    color: "#b7c2b8",
   });
 
   const pillowMaterial = new THREE.MeshPhongMaterial({
-    color: "#8338ec",
+    color: "#c3f36b",
   });
 
   const chairMaterial = new THREE.MeshPhongMaterial({
-    color: "#000",
+    color: "#101211",
   });
 
   return (

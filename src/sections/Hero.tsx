@@ -1,81 +1,161 @@
-import { words } from "../constants";
-import { Button } from "../components/Button";
-import HeroExperience from "../components/HeroModels/HeroExperience";
+
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import AnimatedCounter from "../components/AnimatedCounter";
+import HeroExperience from "../components/HeroModels/HeroExperience";
 
 const Hero = () => {
-    useGSAP(() => {
-        gsap.fromTo('.hero-text h1', 
-            {
-                y: 50,
-                opacity: 0
-            },
-            {
-                y: 0,
-                opacity: 1,
-                stagger: 0.2,
-                duration: 5,
-                ease: 'power2.inOut'
-            },
-        ) 
-    })
+  useGSAP(() => {
+    gsap.fromTo(
+      ".hero-reveal",
+      {
+        y: 35,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        stagger: 0.15,
+        ease: "power3.out",
+      }
+    );
+
+    gsap.fromTo(
+      ".hero-scene",
+      {
+        opacity: 0,
+        scale: 0.96,
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1.8,
+        ease: "power2.out",
+      }
+    );
+  });
 
   return (
-    <section id="hero" className="relative overflow-hidden">
-        <div className="absolute top-0 left-0 z-10">
-            <img src="/images/bg.png" alt="background" />
-        </div>
+    <section
+      id="hero"
+      className="hero-section relative overflow-hidden"
+    >
+      {/* Background atmosphere */}
+      <div className="hero-atmosphere" aria-hidden="true" />
 
-        <div className="hero-layout">
-            {/* LEFT: HERO CONTENT */}
-            <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5">
-                <div className="flex flex-col gap-7">
-                    <div className="hero-text">
-                        <h1>Shaping 
-                            <span className="slide">
-                                <span className="wrapper">
-                                    {words.map((word, index) => (
-                                        <span key={`${word.text}-${index}`} className="flex items-center md:gap-3 gap-1 pb-2">
-                                            <img 
-                                            src={word.imgPath} 
-                                            alt={word.text}
-                                            className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white-50"
-                                             />
-                                             <span>{word.text}</span>
-                                        </span>
-                                    ))}
-                                </span>
-                            </span>
-                        </h1>
-                        <h1>into Real Projects</h1>
-                        <h1>that Deliver Results</h1>
+      {/* Main hero content */}
+      <div className="hero-container">
 
-                        <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
-                            HI, I'M BERNARD, A DEV BASED IN SOUTH AFRICA WITH A PASSION FOR BUILDING. 
-                        </p>
+        {/* LEFT: PERSONAL INTRODUCTION */}
+        <header className="hero-content">
 
-                        <Button 
-                        className="pointer-events-auto md:w-80 md:h-16 w-60 h-12"
-                        href="#work"
-                        id="button"
-                        text="See my Work"
-                        />
-                    </div>
-                </div>
-            </header>
+          <div className="hero-reveal hero-eyebrow">
+            <span className="hero-status-dot" />
+            <span className="mono-label">
+              Software Engineer
+            </span>
+            <span className="hero-location">
+              {/* / South Africa */}
+            </span>
+          </div>
 
-            {/* RIGHT: 3D MODEL */}
-            <figure>
-                <div className="hero-3d-layout"> 
-                    <HeroExperience />
-                </div>
-            </figure>
-        </div>
-        <AnimatedCounter />
+          <div className="hero-heading hero-reveal">
+            <h1>
+              Curiosity has
+              <br />
+              no interface<span className="hero-period">.</span>
+            </h1>
+
+            <h2>
+              I build things to
+              <br />
+              <span>explore them.</span>
+            </h2>
+          </div>
+
+          <p className="hero-description hero-reveal">
+            I'm Bernard, a software engineer fascinated by
+            how things work, how systems connect, and how
+            technology can turn complex ideas into meaningful
+            solutions.
+          </p>
+
+          <div className="hero-actions hero-reveal">
+
+            <a href="#work" className="hero-primary-btn">
+              <span>Explore my work</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+
+            <a href="#skills" className="hero-secondary-btn">
+              Explore my technical universe
+              <span aria-hidden="true">↓</span>
+            </a>
+
+          </div>
+
+          {/* Small technical annotation */}
+          <div className="hero-annotation hero-reveal">
+            <span className="mono-label">
+              CURRENT INTERESTS
+            </span>
+
+            <div className="hero-tags">
+              <span>Systems</span>
+              <span>Backend</span>
+              <span>Cloud</span>
+              <span>AI</span>
+            </div>
+          </div>
+
+        </header>
+
+        {/* RIGHT: 3D CREATIVE WORKSPACE */}
+        <figure className="hero-scene">
+
+          <div className="hero-scene-label">
+            <span className="mono-label">
+              MY WORLD
+            </span>
+            <span className="hero-scene-line" />
+            <span className="mono-label">
+              THE WORKSPACE
+            </span>
+          </div>
+
+          <div className="hero-3d-layout">
+            <HeroExperience />
+          </div>
+
+          <div className="hero-scene-caption">
+            <span className="hero-caption-dot" />
+            <span className="mono-label">
+              A SPACE FOR IDEAS TO TAKE SHAPE
+            </span>
+          </div>
+
+        </figure>
+
+      </div>
+
+      {/* Bottom information */}
+      <div className="hero-bottom">
+        <span className="mono-label">
+          PRETORIA, SOUTH AFRICA
+        </span>
+
+        <a href="#work" className="hero-scroll">
+          SCROLL TO EXPLORE
+          <span aria-hidden="true">↓</span>
+        </a>
+
+        <span className="mono-label">
+          BM / 001
+        </span>
+      </div>
+
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

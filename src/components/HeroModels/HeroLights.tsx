@@ -1,60 +1,55 @@
-import { RectAreaLightUniformsLib } from 'three/examples/jsm/Addons.js';
-import { useMemo } from 'react';
-import * as THREE from 'three';
 
-
-RectAreaLightUniformsLib.init();
 const HeroLights = () => {
-  const rectAreaLight = useMemo(
-    () => new THREE.RectAreaLight('#A259FF', 15, 3, 2),
-    [],
-  );
-
   return (
     <>
-    <spotLight
-    position={[2, 5, 6]}
-    angle={0.15}
-    intensity={100}
-    penumbra={0.2}
-    color="white"
-    />
+      {/* General environment illumination */}
+      <ambientLight
+        intensity={0.6}
+        color="#dce5dd"
+      />
 
-    <spotLight
-    position={[4, 5, 4]}
-    angle={0.3}
-    intensity={40}
-    penumbra={0.5}
-    color="#4cc9f0"
-    />
+      {/* Main overhead light */}
+      <spotLight
+        position={[2, 7, 6]}
+        angle={0.35}
+        intensity={65}
+        penumbra={0.6}
+        color="#f2f2ed"
+        castShadow
+      />
 
-    <spotLight
-    position={[-3, 5, 5]}
-    angle={0.4}
-    intensity={60}
-    penumbra={1}
-    color="#9d4edd"
-    />
+      {/* Cool laboratory lighting */}
+      <spotLight
+        position={[5, 4, -3]}
+        angle={0.4}
+        intensity={35}
+        penumbra={0.8}
+        color="#91bfc2"
+      />
 
-    <primitive 
-    object={rectAreaLight}
-    position={[1, 3, 4]}
-    rotation={[-Math.PI / 4, Math.PI / 4, 0]}
-    />
+      {/* Lime accent lighting */}
+      <spotLight
+        position={[-4, 3, 3]}
+        angle={0.45}
+        intensity={30}
+        penumbra={0.9}
+        color="#c3f36b"
+      />
 
-    <pointLight
-    position={[0, 1, 0]}
-    intensity={10}
-    color="#7209b7"
-    />
+      {/* Subtle environmental fill */}
+      <pointLight
+        position={[0, 2, -4]}
+        intensity={12}
+        color="#91bfc2"
+      />
 
-     <pointLight
-    position={[1, 2, -2]}
-    intensity={10}
-    color="#0d00a4"
-    />
+      <pointLight
+        position={[-3, 1, 1]}
+        intensity={8}
+        color="#c3f36b"
+      />
     </>
-  )
-}
+  );
+};
 
-export default HeroLights
+export default HeroLights;
