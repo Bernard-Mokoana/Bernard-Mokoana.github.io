@@ -1,20 +1,40 @@
+
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 
-import  { Computer } from "../Computer";
+import { Computer } from "../Computer";
 
 const ContactExperience = () => {
   return (
-    <Canvas shadows camera={{ position: [0, 3, 7], fov: 45 }}>
-      <ambientLight intensity={0.5} color="#fff4e6" />
+    <Canvas
+      shadows
+      camera={{ position: [0, 3, 7], fov: 45 }}
+      gl={{ antialias: true, alpha: true }}
+    >
+      {/* Soft base lighting */}
+      <ambientLight intensity={0.7} color="#dce5df" />
 
-      <directionalLight position={[5, 5, 3]} intensity={2.5} color="#ffd9b3" />
-
+      {/* Main neutral light */}
       <directionalLight
-        position={[5, 9, 1]}
+        position={[5, 5, 3]}
+        intensity={2}
+        color="#f2f2ed"
         castShadow
-        intensity={2.5}
-        color="#ffd9b3"
+      />
+
+      {/* Cool fill light */}
+      <directionalLight
+        position={[-5, 3, -2]}
+        intensity={0.8}
+        color="#91bfc2"
+      />
+
+      {/* Subtle lime accent */}
+      <pointLight
+        position={[2, 1, 2]}
+        intensity={1.2}
+        distance={8}
+        color="#c3f36b"
       />
 
       <OrbitControls
@@ -23,17 +43,21 @@ const ContactExperience = () => {
         maxPolarAngle={Math.PI / 2}
       />
 
-      <group scale={[1, 1, 1]}>
-        <mesh
-          receiveShadow
-          position={[0, -1.5, 0]}
-          rotation={[-Math.PI / 2, 0, 0]}
-        >
-          <planeGeometry args={[30, 30]} />
-          <meshStandardMaterial color="#a46b2d" />
-        </mesh>
-      </group>
+      {/* Dark graphite floor */}
+      <mesh
+        receiveShadow
+        position={[0, -1.5, 0]}
+        rotation={[-Math.PI / 2, 0, 0]}
+      >
+        <planeGeometry args={[30, 30]} />
+        <meshStandardMaterial
+          color="#171c19"
+          roughness={0.85}
+          metalness={0.15}
+        />
+      </mesh>
 
+      {/* Computer model */}
       <group scale={0.03} position={[0, -1.49, -2]} castShadow>
         <Computer />
       </group>
