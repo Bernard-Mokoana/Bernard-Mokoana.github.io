@@ -1,28 +1,60 @@
-import { socialImgs } from '../constants'
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className='footer'>
-        <div className='footer-container'>
-            <div className='flex flex-col justify-center md:items-start items-center'>
-                <a href="/">Visit my blog</a>
-            </div>
-            <div className='socials'>
-                {socialImgs.map((img) => (
-                      <a className='icon' target='_blank' href={img.url} key={img.url}>
-                    <img src={img.imgPath} />
-                </a>
-                ))}
-            </div>
+    <footer className="portfolio-footer">
+      <div className="footer-inner">
+        <div className="footer-main">
+          <a className="footer-brand" href="#hero">
+            <span className="footer-brand-mark">BM.</span>
+            <span>The Curious Mind</span>
+          </a>
 
-            <div className='flex flex-col justify-center'>
-                <p className='text-center md:text-end'>
-                    Ⓒ {new Date().getFullYear()} Bernard Mokoana. All rights reserved.
-                </p>
-            </div>
+          <p className="footer-tagline">
+            Curious by nature. Engineered by intention.
+          </p>
         </div>
-    </footer>
-  )
-}
 
-export default Footer
+        <nav className="footer-navigation" aria-label="Footer navigation">
+          <a href="#hero">Home</a>
+          <a href="#work">Projects</a>
+          <a href="#skills">Technical universe</a>
+          <a href="#approach">My approach</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div className="footer-socials">
+          <a
+            href="https://github.com/Bernard-Mokoana"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub profile"
+          >
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/bernard-mokoana-680519228/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn profile"
+          >
+            LinkedIn <span aria-hidden="true">↗</span>
+          </a>
+
+          <a href="#hero" className="back-to-top">
+            Back to top ↑
+          </a>
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        <p>© {currentYear} Bernard Mokoana. All rights reserved.</p>
+        <span>Designed with curiosity. Built with purpose.</span>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
