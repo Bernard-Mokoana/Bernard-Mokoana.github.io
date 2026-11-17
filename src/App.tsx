@@ -14,8 +14,8 @@ const App = () => {
     <Hero />
     <ShowcaseSection />
     {/* <LogoSection /> */}
-    <FeatureCards />
     <TechStack />
+    <FeatureCards />
     <Contact />
     <Footer />
     </>
