@@ -1702,10 +1702,6 @@ img {
   isolation: isolate;
 }
 
-.showcase-card:first-child .showcase-visual {
-  min-height: 360px;
-}
-
 .showcase-visual::before,
 .showcase-visual::after {
   position: absolute;
@@ -2179,4 +2175,132 @@ img {
   margin-top: 1.2rem;
   padding-top: 0.8rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================
+   SHOWCASE PROJECT IMAGE PREVIEWS
+========================================= */
+
+.showcase-image-frame {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 190px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(145, 191, 194, 0.16);
+  border-radius: 0.75rem;
+  background: rgba(16, 18, 17, 0.72);
+}
+
+.showcase-project-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 250px;
+  object-fit: contain;
+  transition:
+    transform 500ms var(--transition-smooth),
+    filter 500ms ease;
+}
+
+/* Give each project a distinct visual atmosphere */
+
+.showcase-visual--thuto {
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(145, 191, 194, 0.16),
+      transparent 70%
+    ),
+    #141b1d;
+}
+
+.showcase-visual--zaai {
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(85, 105, 220, 0.2),
+      transparent 70%
+    ),
+    #11131c;
+}
+
+.showcase-visual--leaderboard {
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(195, 243, 107, 0.1),
+      transparent 70%
+    ),
+    #151a17;
+}
+
+.showcase-visual--network {
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(65, 137, 164, 0.2),
+      transparent 70%
+    ),
+    #12191d;
+}
+
+/* Subtle image interaction */
+
+.showcase-card:hover .showcase-project-image {
+  transform: scale(1.035);
+}
+
+.showcase-visual--thuto .showcase-project-image {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.showcase-visual--zaai .showcase-project-image {
+  object-fit: contain;
+  padding: 0.75rem;
+}
+
+.showcase-visual--leaderboard .showcase-project-image {
+  object-fit: contain;
+  padding: 0.5rem;
+}
+
+.showcase-visual--network .showcase-project-image {
+  object-fit: contain;
+  padding: 0.5rem;
+}
+
+/* Responsive preview sizing */
+
+@media (max-width: 900px) {
+  .showcase-image-frame {
+    min-height: 170px;
+  }
+
+  .showcase-project-image {
+    max-height: 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase-image-frame {
+    min-height: 190px;
+    margin: 1rem 0;
+  }
+
+  .showcase-project-image {
+    max-height: 230px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-project-image {
+    transition: none;
+  }
 }
