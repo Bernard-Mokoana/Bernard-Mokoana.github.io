@@ -89,7 +89,7 @@ const projects = [
 
 const ShowcaseSection = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const cardsRef = useRef<HTMLArticleElement[]>([]);
+  const cardsRef = useRef<HTMLElement[]>([]);
 
   useGSAP(
     () => {

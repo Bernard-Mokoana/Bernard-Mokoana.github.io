@@ -1,10 +1,16 @@
-const TitleHeader = ( {title, sub}) => {
-  return (
-    <div>
-      <p>{sub}</p>
-      <h2 className="text-center">{title}</h2>
-    </div>
-  )
+
+interface TitleHeaderProps {
+  title: string;
+  sub?: string;
 }
 
-export default TitleHeader
+const TitleHeader = ({ title, sub }: TitleHeaderProps) => {
+  return (
+    <div>
+      {sub && <p>{sub}</p>}
+      <h2 className="text-center">{title}</h2>
+    </div>
+  );
+};
+
+export default TitleHeader;
