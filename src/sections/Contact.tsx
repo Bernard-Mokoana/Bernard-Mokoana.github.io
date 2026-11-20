@@ -273,17 +273,17 @@ const Contact = () => {
               <ContactExperience />
             </div>
 
-            <div className="contact-visual-caption">
+            {/* <div className="contact-visual-caption">
               <span>CURIOUS BY NATURE.</span>
               <span>ENGINEERED BY INTENTION.</span>
-            </div>
+            </div> */}
           </div>
         </div>
 
-        <div className="contact-bottom">
+        {/* <div className="contact-bottom">
           <span>THE CURIOUS MIND / PORTFOLIO</span>
           <span>BUILT WITH INTENTION © 2026</span>
-        </div>
+        </div> */}
       </div>
     </section>
   );
