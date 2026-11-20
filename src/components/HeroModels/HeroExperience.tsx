@@ -1,13 +1,34 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { OrbitControls } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { useMediaQuery } from "react-responsive";
 
 import Earth from "./Earth";
 import { portfolioProjects, type Technology } from "./technologyData";
 
-const HeroExperience = () => {
+type HeroExperienceProps = {
+  onReady: () => void;
+}
+
+type SceneReadyProps = {
+  onReady: () => void;
+};
+
+const SceneReady = ({ onReady }: SceneReadyProps) => {
+  const hasReportedReady = useRef(false);
+
+  useFrame(() => {
+    if (hasReportedReady.current) return;
+
+    hasReportedReady.current = true;
+    onReady();
+  });
+
+  return null;
+};
+
+const HeroExperience = ({ onReady }: HeroExperienceProps) => {
   const [selectedTechnology, setSelectedTechnology] =
     useState<Technology | null>(null);
 
@@ -52,6 +73,8 @@ const HeroExperience = () => {
           alpha: true,
         }}
       >
+        <SceneReady onReady={onReady} />
+
         <ambientLight intensity={0.7} color="#dce5dd" />
 
         <directionalLight

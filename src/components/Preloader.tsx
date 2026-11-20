@@ -72,49 +72,68 @@ const LoadingEarth = () => {
   );
 };
 
-const Preloader = () => {
+
+type PreloaderProps = {
+  isReady: boolean;
+};
+
+const Preloader = ({ isReady }: PreloaderProps) => {
   const [progress, setProgress] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
 
+  const startTime = useRef<number | null>(null);
+
+  // Start the visual progress animation.
   useEffect(() => {
-    let exitTimer: number;
-    let removeTimer: number;
+    startTime.current = performance.now();
 
     const progressTimer = window.setInterval(() => {
-      setProgress((current) => {
-        const next = Math.min(current + 2, 100);
-
-        if (next === 100) {
-          window.clearInterval(progressTimer);
-
-          exitTimer = window.setTimeout(() => {
-            setIsExiting(true);
-          }, 250);
-
-          removeTimer = window.setTimeout(() => {
-            setIsVisible(false);
-          }, 1000);
-        }
-
-        return next;
-      });
-    }, 42);
+      setProgress((current) => Math.min(current + 2, 90));
+    }, 50);
 
     return () => {
       window.clearInterval(progressTimer);
-      window.clearTimeout(exitTimer);
-      window.clearTimeout(removeTimer);
     };
   }, []);
 
+  // Wait for the portfolio scene to initialize.
+  useEffect(() => {
+    if (!isReady) return;
+
+    const elapsed =
+      performance.now() - (startTime.current ?? performance.now());
+
+    const remaining = Math.max(0, 1200 - elapsed);
+
+    const exitTimer = window.setTimeout(() => {
+      setIsExiting(true);
+    }, remaining + 350);
+
+    const removeTimer = window.setTimeout(() => {
+      setIsVisible(false);
+    }, remaining + 1100);
+
+    return () => {
+      window.clearTimeout(exitTimer);
+      window.clearTimeout(removeTimer);
+    };
+  }, [isReady]);
+
   if (!isVisible) return null;
+
+  // Display 100% when the actual scene is ready.
+  const displayProgress = isReady ? 100 : progress;
 
   return (
     <div
       className={`preloader ${isExiting ? "preloader-exit" : ""}`}
       role="status"
-      aria-label={`Loading portfolio, ${progress}%`}
+      aria-label={
+        isReady
+          ? "Portfolio ready"
+          : `Initializing portfolio, ${displayProgress}%`
+      }
     >
       <div className="preloader-content">
         <div className="preloader-globe">
@@ -154,20 +173,27 @@ const Preloader = () => {
 
           <h1>The Curious Mind</h1>
 
-          <p>Curious by nature. Engineered by intention.</p>
+          <p>
+            Curious by nature. Engineered by intention.
+          </p>
         </div>
 
         <div className="preloader-progress">
           <div className="preloader-progress-track">
             <div
               className="preloader-progress-fill"
-              style={{ width: `${progress}%` }}
+              style={{ width: `${displayProgress}%` }}
             />
           </div>
 
           <div className="preloader-progress-meta">
-            <span>INITIALIZING EXPERIENCE</span>
-            <span>{progress}%</span>
+            <span>
+              {isReady
+                ? "EXPERIENCE READY"
+                : "INITIALIZING EXPERIENCE"}
+            </span>
+
+            <span>{displayProgress}%</span>
           </div>
         </div>
       </div>
@@ -177,7 +203,7 @@ const Preloader = () => {
       </span>
 
       <span className="preloader-corner preloader-bottom-right">
-        SYSTEM ONLINE
+        {isReady ? "SYSTEM ONLINE" : "SYSTEM INITIALIZING"}
       </span>
     </div>
   );

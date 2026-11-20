@@ -3,7 +3,11 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import HeroExperience from "../components/HeroModels/HeroExperience";
 
-const Hero = () => {
+type HeroProps = {
+  onSceneReady: () => void;
+};
+
+const Hero = ({ onSceneReady }: HeroProps) => {
   useGSAP(() => {
     gsap.fromTo(
       ".hero-reveal",
@@ -124,7 +128,7 @@ const Hero = () => {
           </div>
 
           <div className="hero-3d-layout">
-            <HeroExperience />
+            <HeroExperience onReady={onSceneReady} />
           </div>
 
           <div className="hero-scene-caption">
