@@ -7,32 +7,32 @@ const LoadingEarth = () => {
   const globeRef = useRef<THREE.Group>(null);
   const prefersReducedMotion = useRef(false);
 
-useEffect(() => {
-  const mediaQuery = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  );
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
 
-  prefersReducedMotion.current = mediaQuery.matches;
+    prefersReducedMotion.current = mediaQuery.matches;
 
-  const handleChange = (event: MediaQueryListEvent) => {
-    prefersReducedMotion.current = event.matches;
-  };
+    const handleChange = (event: MediaQueryListEvent) => {
+      prefersReducedMotion.current = event.matches;
+    };
 
-  mediaQuery.addEventListener("change", handleChange);
+    mediaQuery.addEventListener("change", handleChange);
 
-  return () => {
-    mediaQuery.removeEventListener("change", handleChange);
-  };
-}, []);
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, []);
 
-useFrame((_, delta) => {
-  if (!globeRef.current || prefersReducedMotion.current) return;
+  useFrame((_, delta) => {
+    if (!globeRef.current || prefersReducedMotion.current) return;
 
-  globeRef.current.rotation.y += delta * 0.22;
+    globeRef.current.rotation.y += delta * 0.22;
 
-  globeRef.current.rotation.x =
-    Math.sin(globeRef.current.rotation.y * 0.35) * 0.06;
-});
+    globeRef.current.rotation.x =
+      Math.sin(globeRef.current.rotation.y * 0.35) * 0.06;
+  });
 
   return (
     <group ref={globeRef}>
@@ -68,7 +68,7 @@ useFrame((_, delta) => {
         />
       </mesh>
 
-      {/* Orbital ring */}
+      {/* Primary orbital ring */}
       <mesh rotation={[Math.PI / 2.8, 0.2, 0]}>
         <torusGeometry args={[1.75, 0.008, 8, 120]} />
         <meshBasicMaterial
@@ -91,7 +91,6 @@ useFrame((_, delta) => {
   );
 };
 
-
 type PreloaderProps = {
   isReady: boolean;
 };
@@ -103,17 +102,20 @@ const Preloader = ({ isReady }: PreloaderProps) => {
 
   const startTime = useRef<number | null>(null);
 
+  // Lock scrolling only while the preloader is visible.
   useEffect(() => {
-  const previousOverflow = document.body.style.overflow;
+    if (!isVisible) return;
 
-  document.body.style.overflow = "hidden";
+    const previousOverflow = document.body.style.overflow;
 
-  return () => {
-    document.body.style.overflow = previousOverflow;
-  };
-}, []);
+    document.body.style.overflow = "hidden";
 
-  // Start the visual progress animation.
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isVisible]);
+
+  // Animate the visual progress up to 90%.
   useEffect(() => {
     startTime.current = performance.now();
 
@@ -126,7 +128,7 @@ const Preloader = ({ isReady }: PreloaderProps) => {
     };
   }, []);
 
-  // Wait for the portfolio scene to initialize.
+  // Reveal the portfolio when the hero Earth scene is ready.
   useEffect(() => {
     if (!isReady) return;
 
@@ -151,7 +153,6 @@ const Preloader = ({ isReady }: PreloaderProps) => {
 
   if (!isVisible) return null;
 
-  // Display 100% when the actual scene is ready.
   const displayProgress = isReady ? 100 : progress;
 
   return (
