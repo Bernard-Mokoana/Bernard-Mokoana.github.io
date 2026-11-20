@@ -5,10 +5,12 @@ import Footer from "./sections/Footer"
 import Hero from "./sections/Hero"
 import ShowcaseSection from "./sections/ShowcaseSection"
 import TechStack from "./sections/TechStack"
+import Preloader from "./components/Preloader"
 
 const App = () => {
   return (
     <>
+    <Preloader />
     <Navbar />
     <Hero />
     <ShowcaseSection />
