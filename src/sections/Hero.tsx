@@ -52,7 +52,7 @@ const Hero = () => {
           <div className="hero-reveal hero-eyebrow">
             <span className="hero-status-dot" />
             <span className="mono-label">
-              Software Engineer
+              BACKEND Software Engineer
             </span>
             <span className="hero-location">
               {/* / South Africa */}
@@ -130,7 +130,7 @@ const Hero = () => {
           <div className="hero-scene-caption">
             <span className="hero-caption-dot" />
             <span className="mono-label">
-              SELECT A MARKER TO EXPLORE ITS PROJECTS
+              SELECT A TECH ICON TO EXPLORE ITS PROJECTS
             </span>
           </div>
 

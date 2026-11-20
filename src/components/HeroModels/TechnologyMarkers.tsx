@@ -1,8 +1,9 @@
+
 import { Html } from "@react-three/drei";
 import * as THREE from "three";
 import { technologies, type Technology } from "./technologyData";
 
-const MARKER_RADIUS = 2.27;
+const MARKER_RADIUS = 2.235;
 
 const getGlobePosition = (
   latitude: number,
@@ -64,7 +65,10 @@ const TechnologyMarkers = ({
                 className="globe-tech-icon"
                 aria-hidden="true"
               >
-                <path d={technology.icon.path} fill="currentColor" />
+                <path
+                  d={technology.icon.path}
+                  fill="currentColor"
+                />
               </svg>
 
               <span>{technology.name}</span>

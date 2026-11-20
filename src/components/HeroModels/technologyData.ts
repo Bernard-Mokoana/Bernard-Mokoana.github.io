@@ -9,6 +9,7 @@ import {
   siMongodb,
   siRedis,
   siDocker,
+  siCplusplus,
 } from "simple-icons";
 
 export type ProjectConnection = {
@@ -242,5 +243,29 @@ export const technologies: Technology[] = [
           "Docker Compose defines the Redis, FastAPI server, Python worker and Next.js client services.",
       },
     ],
+  },
+  // {
+  //   name: "Java",
+  //   category: "Programming",
+  //   description:
+  //     "An object-oriented programming language used to build robust, portable applications and backend systems.",
+  //   application:
+  //     "Developing object-oriented applications and strengthening programming fundamentals.",
+  //   icon: siJava,
+  //   latitude: 18,
+  //   longitude: 125,
+  //   projects: [],
+  // },
+  {
+    name: "C++",
+    category: "Programming",
+    description:
+      "A high-performance programming language offering low-level memory control and object-oriented programming capabilities.",
+    application:
+      "Exploring algorithms, data structures, object-oriented programming and performance-focused software development.",
+    icon: siCplusplus,
+    latitude: -28,
+    longitude: 145,
+    projects: [],
   },
 ];

@@ -119,7 +119,7 @@ const ShowcaseSection = () => {
         <div className="showcase-heading">
           <div>
             <span className="showcase-eyebrow">
-              SELECTED WORK / 2026
+              SELECTED WORK
             </span>
 
             <h2>
@@ -129,7 +129,7 @@ const ShowcaseSection = () => {
 
           <p>
             A selection of projects exploring full-stack development,
-            AI infrastructure, and real-time systems.
+            AI infrastructure, Computer Networking and real-time systems.
           </p>
         </div>
 

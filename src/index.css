@@ -3447,3 +3447,188 @@ img {
     transition: none;
   }
 }
+
+/* =========================================
+   MOBILE HERO LAYOUT REFINEMENT
+========================================= */
+
+@media (max-width: 768px) {
+  .hero-section {
+    width: 100%;
+    overflow: clip;
+    padding: 105px 22px 24px;
+  }
+
+  .hero-container {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .hero-content {
+    width: 100%;
+    min-width: 0;
+    padding: 12px 0 0;
+  }
+
+  .hero-eyebrow,
+  .hero-heading,
+  .hero-description,
+  .hero-actions,
+  .hero-annotation {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero-heading h1 {
+    font-size: clamp(2.65rem, 10.5vw, 4.5rem);
+    overflow-wrap: normal;
+  }
+
+  .hero-description {
+    max-width: 100%;
+  }
+
+  .hero-annotation {
+    margin-top: 28px;
+  }
+
+  .hero-tags {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  /* Globe scene */
+  .hero-scene {
+    width: 100%;
+    height: 360px;
+    min-height: 0;
+    margin-top: 12px;
+    overflow: visible;
+  }
+
+  .hero-scene-label {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    min-height: 24px;
+    flex-wrap: wrap;
+    gap: 9px;
+    font-size: 8px;
+  }
+
+  .hero-scene-line {
+    width: 22px;
+    flex-shrink: 0;
+  }
+
+  .hero-3d-layout {
+    width: 100%;
+    height: 320px;
+    min-height: 0;
+    margin-top: 2px;
+  }
+
+  .hero-experience {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .hero-experience canvas {
+    width: 100% !important;
+    height: 100% !important;
+    touch-action: pan-y;
+  }
+
+  .hero-scene-caption {
+    position: absolute;
+    right: 0;
+    bottom: 4px;
+    left: 0;
+    justify-content: center;
+    gap: 8px;
+    font-size: 8px;
+    text-align: center;
+  }
+
+  .hero-bottom {
+    margin-top: 12px;
+    padding-top: 16px;
+  }
+}
+
+/* Smaller phones */
+@media (max-width: 480px) {
+  .hero-section {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .hero-heading h1 {
+    font-size: clamp(2.5rem, 10.5vw, 3.5rem);
+  }
+
+  .hero-heading h2 {
+    font-size: clamp(1.8rem, 7.5vw, 2.5rem);
+  }
+
+  .hero-actions {
+    gap: 16px;
+  }
+
+  .hero-scene {
+    height: 340px;
+  }
+
+  .hero-3d-layout {
+    height: 300px;
+  }
+
+  .hero-scene-label {
+    gap: 7px;
+    font-size: 7px;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-scene-caption .mono-label {
+    font-size: 7px;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-bottom {
+    font-size: 7px;
+  }
+}
+
+/* Very narrow phones */
+@media (max-width: 360px) {
+  .hero-section {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .hero-heading h1 {
+    font-size: 2.4rem;
+  }
+
+  .hero-scene {
+    height: 320px;
+  }
+
+  .hero-3d-layout {
+    height: 280px;
+  }
+
+  .hero-scene-label {
+    gap: 5px;
+  }
+
+  .hero-scene-line {
+    width: 14px;
+  }
+}

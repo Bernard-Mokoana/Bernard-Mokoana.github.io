@@ -89,6 +89,7 @@ const HeroExperience = () => {
 
         <group
           scale={isMobile ? 0.8 : isTablet ? 0.9 : 1}
+          position={isMobile ? [0, 0.35, 0] : [0, 0, 0]}
         >
           <Earth
             onSelectTechnology={setSelectedTechnology}
