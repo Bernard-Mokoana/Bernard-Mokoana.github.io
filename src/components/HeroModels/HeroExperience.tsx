@@ -64,7 +64,7 @@ const HeroExperience = ({ onReady }: HeroExperienceProps) => {
     <div className="hero-experience">
       <Canvas
         camera={{
-          position: [0, 0, 8],
+          position: [0, 0, isMobile ? 6.4 : 8],
           fov: 45,
         }}
         dpr={isMobile ? 1 : [1, 1.5]}
@@ -104,16 +104,16 @@ const HeroExperience = ({ onReady }: HeroExperienceProps) => {
         dampingFactor={0.06}
         autoRotate={!selectedTechnology && !prefersReducedMotion}
         autoRotateSpeed={0.3}
-        minDistance={5}
-        maxDistance={12}
+        minDistance={isMobile ? 4.8 : 5}
+        maxDistance={isMobile ? 8 : 12}
         minPolarAngle={Math.PI / 4}
         maxPolarAngle={Math.PI * 0.75}
         />
 
         <group
-          scale={isMobile ? 0.8 : isTablet ? 0.9 : 1}
-          position={isMobile ? [0, 0.35, 0] : [0, 0, 0]}
-        >
+  scale={isMobile ? 0.92 : isTablet ? 0.9 : 1}
+  position={isMobile ? [0, 0.05, 0] : [0, 0, 0]}
+>
           <Earth
             onSelectTechnology={setSelectedTechnology}
             selectedTechnology={

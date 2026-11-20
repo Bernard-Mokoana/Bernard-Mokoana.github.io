@@ -3832,3 +3832,430 @@ img {
     animation: none;
   }
 }
+
+/* =========================================
+   MOBILE HERO SPACING REFINEMENT
+========================================= */
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top: 100px;
+    padding-bottom: 18px;
+  }
+
+  .hero-annotation {
+    margin-top: 24px;
+  }
+
+  .hero-scene {
+    height: 290px;
+    min-height: 0;
+    margin-top: 6px;
+  }
+
+  .hero-scene-label {
+    min-height: 20px;
+  }
+
+  .hero-3d-layout {
+    height: 250px;
+    min-height: 0;
+    margin-top: 0;
+  }
+
+  .hero-scene-caption {
+    bottom: 0;
+  }
+
+  .hero-bottom {
+    margin-top: 6px;
+    padding-top: 12px;
+  }
+
+  /* Smaller technology markers */
+  .globe-tech-marker {
+    width: 30px;
+    height: 30px;
+  }
+
+  .globe-tech-icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  /* Bring Selected Work closer to the hero */
+  .app-showcase {
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+  }
+
+  .showcase-heading {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .hero-scene {
+    height: 275px;
+  }
+
+  .hero-3d-layout {
+    height: 235px;
+  }
+
+  .hero-scene-caption .mono-label {
+    font-size: 7px;
+    letter-spacing: 0.035em;
+  }
+
+  .hero-bottom {
+    margin-top: 4px;
+    padding-top: 10px;
+  }
+
+  .app-showcase {
+    padding-top: 2.5rem;
+  }
+}
+
+/* =========================================
+   MOBILE EARTH: SIZE AND POSITION FIX
+========================================= */
+
+@media (max-width: 768px) {
+  .hero-scene {
+    display: grid;
+    grid-template-rows: 24px minmax(0, 1fr);
+    width: 100%;
+    height: 310px;
+    min-height: 0;
+    margin-top: 8px;
+    overflow: visible;
+  }
+
+  .hero-scene-label {
+    position: relative;
+    top: auto;
+    left: auto;
+    align-self: center;
+    margin: 0;
+  }
+
+  .hero-3d-layout {
+    width: 100%;
+    height: 286px;
+    min-height: 0;
+    margin: 0;
+  }
+
+  .hero-experience {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .hero-experience canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .hero-scene-caption {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .globe-tech-marker {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .globe-tech-marker span {
+    display: none;
+  }
+
+  .globe-tech-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-scene {
+    height: 295px;
+  }
+
+  .hero-3d-layout {
+    height: 271px;
+  }
+
+  .hero-scene-caption .mono-label {
+    font-size: 7px;
+  }
+}
+
+/* =========================================
+   MOBILE: SIDE-BY-SIDE TECH UNIVERSE
+========================================= */
+
+@media (max-width: 768px) {
+  .hero-scene {
+    display: grid;
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+    grid-template-rows: 230px auto;
+    align-items: center;
+    column-gap: 4px;
+
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    margin-top: 12px;
+    overflow: visible;
+  }
+
+  /* Heading on the left */
+  .hero-scene-label {
+    position: relative;
+    top: auto;
+    left: auto;
+    z-index: 5;
+
+    display: flex;
+    grid-column: 1;
+    grid-row: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 12px;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    padding-left: 2px;
+
+    font-size: 9px;
+    line-height: 1.8;
+  }
+
+  .hero-scene-label .mono-label:last-child {
+    max-width: 115px;
+  }
+
+  .hero-scene-line {
+    width: 28px;
+    height: 1px;
+    flex-shrink: 0;
+  }
+
+  /* Larger Earth on the right */
+  .hero-3d-layout {
+    position: relative;
+    grid-column: 2;
+    grid-row: 1;
+
+    width: 100%;
+    height: 230px;
+    min-height: 0;
+    margin: 0;
+  }
+
+  .hero-experience {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .hero-experience canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    touch-action: pan-y;
+  }
+
+  /* Instruction beneath both columns */
+  .hero-scene-caption {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
+
+    display: flex;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: 100%;
+    margin-top: 8px;
+    padding: 8px 0;
+
+    font-size: 8px;
+    text-align: center;
+  }
+
+  .hero-scene-caption .mono-label {
+    font-size: 7px;
+    letter-spacing: 0.045em;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-scene {
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+    grid-template-rows: 215px auto;
+    column-gap: 0;
+    margin-top: 8px;
+  }
+
+  .hero-scene-label {
+    gap: 10px;
+    font-size: 8px;
+  }
+
+  .hero-scene-label .mono-label:last-child {
+    max-width: 105px;
+  }
+
+  .hero-3d-layout {
+    height: 215px;
+  }
+
+  .hero-scene-caption {
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-scene {
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+    grid-template-rows: 200px auto;
+  }
+
+  .hero-3d-layout {
+    height: 200px;
+  }
+
+  .hero-scene-label .mono-label {
+    font-size: 7px;
+  }
+}
+
+/* =========================================
+   MOBILE GLOBE MARKER REFINEMENT
+========================================= */
+
+@media (max-width: 768px) {
+  .globe-tech-marker {
+    width: 27px !important;
+    height: 27px !important;
+    min-width: 27px;
+    padding: 0 !important;
+    gap: 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+
+  .globe-tech-icon {
+    width: 12px !important;
+    height: 12px !important;
+    flex-shrink: 0;
+  }
+
+  .globe-tech-marker span {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .globe-tech-marker {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px;
+  }
+
+  .globe-tech-icon {
+    width: 11px !important;
+    height: 11px !important;
+  }
+}
+
+/* =========================================
+   MOBILE GLOBE CAPTION OVERLAP FIX
+========================================= */
+
+/* MOBILE: separate the globe and caption into distinct rows */
+@media (max-width: 600px) {
+  .hero-scene {
+    display: grid !important;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr) !important;
+    grid-template-rows: auto auto !important;
+    align-items: center !important;
+    row-gap: 14px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Heading stays to the left of the globe */
+  .hero-scene-label {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    position: relative !important;
+    inset: auto !important;
+    align-self: center !important;
+    z-index: 2;
+  }
+
+  /* Globe occupies the right side and gets its own height */
+  .hero-3d-layout {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: 250px !important;
+    min-height: 250px !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+
+  .hero-experience {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 250px !important;
+    inset: auto !important;
+  }
+
+  /* Caption is now below both columns, never over the globe */
+  .hero-scene-caption {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 8px 0 0 !important;
+    transform: none !important;
+    text-align: center !important;
+    z-index: 3;
+  }
+}
