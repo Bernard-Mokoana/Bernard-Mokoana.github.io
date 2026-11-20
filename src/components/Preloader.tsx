@@ -5,15 +5,34 @@ import * as THREE from "three";
 
 const LoadingEarth = () => {
   const globeRef = useRef<THREE.Group>(null);
+  const prefersReducedMotion = useRef(false);
 
-  useFrame((_, delta) => {
-    if (!globeRef.current) return;
+useEffect(() => {
+  const mediaQuery = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
 
-    globeRef.current.rotation.y += delta * 0.22;
-    globeRef.current.rotation.x = Math.sin(
-      globeRef.current.rotation.y * 0.35
-    ) * 0.06;
-  });
+  prefersReducedMotion.current = mediaQuery.matches;
+
+  const handleChange = (event: MediaQueryListEvent) => {
+    prefersReducedMotion.current = event.matches;
+  };
+
+  mediaQuery.addEventListener("change", handleChange);
+
+  return () => {
+    mediaQuery.removeEventListener("change", handleChange);
+  };
+}, []);
+
+useFrame((_, delta) => {
+  if (!globeRef.current || prefersReducedMotion.current) return;
+
+  globeRef.current.rotation.y += delta * 0.22;
+
+  globeRef.current.rotation.x =
+    Math.sin(globeRef.current.rotation.y * 0.35) * 0.06;
+});
 
   return (
     <group ref={globeRef}>
@@ -83,6 +102,16 @@ const Preloader = ({ isReady }: PreloaderProps) => {
   const [isVisible, setIsVisible] = useState(true);
 
   const startTime = useRef<number | null>(null);
+
+  useEffect(() => {
+  const previousOverflow = document.body.style.overflow;
+
+  document.body.style.overflow = "hidden";
+
+  return () => {
+    document.body.style.overflow = previousOverflow;
+  };
+}, []);
 
   // Start the visual progress animation.
   useEffect(() => {
